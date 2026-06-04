@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Labtoso | Linktree</title>
+	<meta name="description" content="Labtoso Linktree mit Discord, Twitch, YouTube und Email.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="ambient ambient-one" aria-hidden="true"></div>
+	<div class="ambient ambient-two" aria-hidden="true"></div>
+	<div class="cursor-glow" aria-hidden="true"></div>
+
+	<main class="page-shell">
+		<section class="hero-card">
+			<div class="profile-top">
+				<div class="avatar-frame">
+					<img class="avatar-image" src="Assets/profilbild.jpg" alt="Profilbild von Labtoso">
+				</div>
+				<div class="profile-copy">
+					<h1>Labtoso</h1>
+				</div>
+			</div>
+		</section>
+
+		<section class="links-grid" aria-label="Social Links">
+			<a class="link-card link-card-discord" href="https://discord.com/users/DEINNAME" target="_blank" rel="noreferrer">
+				<span class="icon-badge" aria-hidden="true">
+					<img src="Assets/discord.png" alt="">
+				</span>
+				<span class="link-copy-block">
+					<strong>Discord</strong>
+				</span>
+				<span class="link-action">Open</span>
+			</a>
+
+			<a class="link-card link-card-twitch" href="https://www.twitch.tv/DEINNAME" target="_blank" rel="noreferrer">
+				<span class="icon-badge" aria-hidden="true">
+					<img src="Assets/twitch.png" alt="">
+				</span>
+				<span class="link-copy-block">
+					<strong>Twitch</strong>
+				</span>
+				<span class="link-action">Watch</span>
+			</a>
+
+			<a class="link-card link-card-youtube" href="https://www.youtube.com/@DEINKANAL" target="_blank" rel="noreferrer">
+				<span class="icon-badge" aria-hidden="true">
+					<img src="Assets/youtube.png" alt="">
+				</span>
+				<span class="link-copy-block">
+					<strong>YouTube</strong>
+				</span>
+				<span class="link-action">Play</span>
+			</a>
+
+			<a class="link-card link-card-email" href="mailto:dein.name@example.com">
+				<span class="icon-badge icon-badge-email" aria-hidden="true">
+					<img src="Assets/gmail.png" alt="">
+				</span>
+				<span class="link-copy-block">
+					<strong>Email</strong>
+				</span>
+				<span class="link-action">Mail</span>
+			</a>
+		</section>
+
+		<footer class="page-footer">&copy; <span id="yearLabel"></span> Labtoso</footer>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+</html>
