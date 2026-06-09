@@ -1,6 +1,6 @@
 {
   "version": "4.6.0",
-  "created": "2026-06-09T11:26:25Z",
+  "created": "2026-06-09T11:40:47Z",
   "files": [
     {
       "path": ".nojekyll"
@@ -55,9 +55,6 @@
     },
     {
       "path": "resources\\retype.LICENSE.txt"
-    },
-    {
-      "path": "retype.json"
     },
     {
       "path": "robots.txt"

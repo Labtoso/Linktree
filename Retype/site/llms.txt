@@ -1,5 +1,0 @@
-﻿# Index
-
-> Hallo wo bin ich?
-
-- [Index](https://labtoso.github.io/Linktree/Retype/site/index.md): Index
