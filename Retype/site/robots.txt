@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://labtoso.github.io/Linktree/Retype/site/sitemap.xml
