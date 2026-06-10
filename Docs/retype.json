@@ -1,4 +1,5 @@
 {
 	"url": "https://labtoso.github.io/Linktree/Docs/",
-	"input": "Docs"
+	"input": "Docs",
+	"output": "."
 }
