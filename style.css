@@ -339,7 +339,7 @@ h1 {
 	}
 
 	.link-card {
-		grid-template-columns: auto 1fr;
+		grid-template-columns: auto 1fr auto;
 		min-height: 80px;
 		padding: 14px;
 		gap: 12px;
@@ -370,8 +370,9 @@ h1 {
 	}
 
 	.link-action {
-		grid-column: 2;
-		justify-self: start;
+		grid-column: 3;
+		justify-self: end;
+		align-self: center;
 		min-height: 34px;
 		padding: 0 12px;
 		font-size: 0.74rem;
