@@ -1,5 +1,6 @@
 const yearLabel = document.getElementById("yearLabel");
 const cursorGlow = document.querySelector(".cursor-glow");
+const pageShell = document.querySelector(".page-shell");
 const root = document.documentElement;
 
 const pointerState = {
@@ -56,7 +57,6 @@ function applyDeviceProfile() {
 	const viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
 	const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
 	const shortSide = Math.min(viewportWidth, viewportHeight);
-	const longSide = Math.max(viewportWidth, viewportHeight);
 	const dpr = window.devicePixelRatio || 1;
 	const deviceInfo = detectDeviceType(shortSide, navigator.userAgent || "");
 
@@ -70,8 +70,8 @@ function applyDeviceProfile() {
 		spaceScale = clamp(shortSide / 820, 0.93, 1.08);
 		fontScale = clamp(shortSide / 820, 0.95, 1.06);
 	} else {
-		spaceScale = clamp(viewportWidth / 1480, 0.9, 1.28);
-		fontScale = clamp(viewportWidth / 1520, 0.95, 1.22);
+		spaceScale = clamp(viewportWidth / 1440, 0.95, 1.22);
+		fontScale = clamp(viewportWidth / 1480, 0.96, 1.16);
 	}
 
 	const topMargin = Math.round(24 * spaceScale);
@@ -80,7 +80,7 @@ function applyDeviceProfile() {
 		? Math.round(clamp(viewportWidth * 0.03, 22, 52))
 		: Math.round(24 * spaceScale);
 	const shellMaxWidth = deviceInfo.type === "desktop"
-		? Math.round(clamp(longSide * 0.78, 980, 1360))
+		? Math.round(clamp(viewportWidth * 0.9, 980, 1360))
 		: deviceInfo.type === "tablet"
 			? 920
 			: 560;
@@ -95,7 +95,41 @@ function applyDeviceProfile() {
 	root.style.setProperty("--shell-side-gap", `${sideGap}px`);
 	root.style.setProperty("--shell-margin-top", `${topMargin}px`);
 	root.style.setProperty("--shell-margin-bottom", `${bottomMargin}px`);
+	root.style.setProperty("--ui-scale", "1");
 	root.style.setProperty("--viewport-height", `${viewportHeight}px`);
+
+	applyViewportScale();
+}
+
+function applyViewportScale() {
+	if (!pageShell) {
+		return;
+	}
+
+	const viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+	const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+	const sideGap = parseFloat(getComputedStyle(root).getPropertyValue("--shell-side-gap")) || 24;
+	const topMargin = parseFloat(getComputedStyle(root).getPropertyValue("--shell-margin-top")) || 24;
+	const bottomMargin = parseFloat(getComputedStyle(root).getPropertyValue("--shell-margin-bottom")) || 32;
+
+	root.style.setProperty("--ui-scale", "1");
+
+	const availableWidth = Math.max(320, viewportWidth - sideGap * 2);
+	const availableHeight = Math.max(360, viewportHeight - topMargin - bottomMargin);
+	const shellWidth = pageShell.offsetWidth;
+	const shellHeight = pageShell.offsetHeight;
+
+	if (!shellWidth || !shellHeight) {
+		return;
+	}
+
+	const widthScale = availableWidth / shellWidth;
+	const heightScale = availableHeight / shellHeight;
+	const isDesktop = (root.dataset.deviceType || "desktop") === "desktop";
+	const minScale = isDesktop ? 0.62 : 0.78;
+	const uiScale = clamp(Math.min(widthScale, heightScale), minScale, 1);
+
+	root.style.setProperty("--ui-scale", String(uiScale));
 }
 
 function animateCursorGlow() {
@@ -137,4 +171,16 @@ window.addEventListener("resize", applyDeviceProfile);
 window.addEventListener("orientationchange", applyDeviceProfile);
 if (window.visualViewport) {
 	window.visualViewport.addEventListener("resize", applyDeviceProfile);
+}
+
+if (typeof ResizeObserver !== "undefined") {
+	const fitObserver = new ResizeObserver(() => {
+		applyViewportScale();
+	});
+
+	if (pageShell) {
+		fitObserver.observe(pageShell);
+	}
+
+	fitObserver.observe(document.body);
 }

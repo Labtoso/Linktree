@@ -16,6 +16,7 @@
 	--cursor-glow: radial-gradient(circle, rgba(255, 142, 63, 0.22) 0%, rgba(255, 122, 26, 0.12) 28%, transparent 70%);
 	--device-space-scale: 1;
 	--device-font-scale: 1;
+	--ui-scale: 1;
 	--shell-max-width: 1120px;
 	--shell-side-gap: 28px;
 	--shell-margin-top: 24px;
@@ -98,6 +99,14 @@ a {
 	margin: var(--shell-margin-top) auto var(--shell-margin-bottom);
 	display: grid;
 	gap: calc(22px * var(--device-space-scale));
+	zoom: var(--ui-scale);
+}
+
+@supports not (zoom: 1) {
+	.page-shell {
+		transform: scale(var(--ui-scale));
+		transform-origin: top center;
+	}
 }
 
 .hero-card,
@@ -258,6 +267,7 @@ h1 {
 	font-family: "Outfit", sans-serif;
 	font-size: 1.18rem;
 	letter-spacing: 0.01em;
+	overflow-wrap: anywhere;
 }
 
 .link-copy-block small {
@@ -282,6 +292,7 @@ h1 {
 	font-weight: 800;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
+	white-space: nowrap;
 	transform: translateZ(0) scale(1);
 	transform-origin: center;
 	transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -414,6 +425,16 @@ h1 {
 
 	.cursor-glow {
 		display: none;
+	}
+}
+
+@media (max-width: 1280px) and (min-width: 761px) {
+	.links-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.link-card {
+		min-height: 94px;
 	}
 }
 
