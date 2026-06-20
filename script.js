@@ -56,6 +56,7 @@ function applyDeviceProfile() {
 	const viewportWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
 	const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
 	const shortSide = Math.min(viewportWidth, viewportHeight);
+	const longSide = Math.max(viewportWidth, viewportHeight);
 	const dpr = window.devicePixelRatio || 1;
 	const deviceInfo = detectDeviceType(shortSide, navigator.userAgent || "");
 
@@ -68,12 +69,21 @@ function applyDeviceProfile() {
 	} else if (deviceInfo.type === "tablet") {
 		spaceScale = clamp(shortSide / 820, 0.93, 1.08);
 		fontScale = clamp(shortSide / 820, 0.95, 1.06);
+	} else {
+		spaceScale = clamp(viewportWidth / 1480, 0.9, 1.28);
+		fontScale = clamp(viewportWidth / 1520, 0.95, 1.22);
 	}
 
 	const topMargin = Math.round(24 * spaceScale);
 	const bottomMargin = Math.round(32 * spaceScale);
-	const sideGap = Math.round(24 * spaceScale);
-	const shellMaxWidth = deviceInfo.type === "desktop" ? 960 : deviceInfo.type === "tablet" ? 860 : 520;
+	const sideGap = deviceInfo.type === "desktop"
+		? Math.round(clamp(viewportWidth * 0.03, 22, 52))
+		: Math.round(24 * spaceScale);
+	const shellMaxWidth = deviceInfo.type === "desktop"
+		? Math.round(clamp(longSide * 0.78, 980, 1360))
+		: deviceInfo.type === "tablet"
+			? 920
+			: 560;
 
 	root.dataset.deviceType = deviceInfo.type;
 	root.dataset.platform = deviceInfo.platform;
