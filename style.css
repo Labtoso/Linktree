@@ -17,8 +17,8 @@
 	--device-space-scale: 1;
 	--device-font-scale: 1;
 	--ui-scale: 1;
-	--shell-max-width: 1120px;
-	--shell-side-gap: 28px;
+	--shell-max-width: 1300px;
+	--shell-side-gap: 2px;
 	--shell-margin-top: 24px;
 	--shell-margin-bottom: 32px;
 	--viewport-height: 100vh;
