@@ -237,6 +237,85 @@ h1 {
 	}
 }
 
+/* Desktop: gleiches Design, größer, Links im 2er-Raster */
+@media (min-width: 900px) {
+	.page {
+		max-width: 960px;
+		padding-top: 72px;
+		gap: 48px;
+	}
+
+	.profile {
+		gap: 20px;
+	}
+
+	.avatar {
+		width: 168px;
+		height: 168px;
+		padding: 5px;
+		border-radius: 16px;
+		box-shadow: 8px 8px 0 var(--dusk);
+	}
+
+	.avatar img {
+		border-radius: 12px;
+	}
+
+	h1 {
+		font-size: 3.6rem;
+	}
+
+	.links {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	/* Shorts Kanal bleibt unten und geht über beide Spalten */
+	.links .link:last-child {
+		grid-column: 1 / -1;
+	}
+
+	.link {
+		min-height: 96px;
+		gap: 18px;
+		padding: 16px 22px 16px 16px;
+		border-radius: 14px;
+	}
+
+	.link-icon {
+		width: 62px;
+		height: 62px;
+		border-radius: 10px;
+	}
+
+	.link-icon img {
+		width: 36px;
+		height: 36px;
+	}
+
+	.link-icon-wide img {
+		width: 62px;
+		height: 62px;
+	}
+
+	.link-text strong {
+		font-size: 1.3rem;
+	}
+
+	.link-text small {
+		font-size: 0.95rem;
+	}
+
+	.link-arrow {
+		font-size: 1.4rem;
+	}
+
+	.footer {
+		font-size: 0.85rem;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.link,
 	.link-arrow {
