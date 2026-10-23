@@ -1,4 +1,4 @@
-/* Farben aus dem Profilbild: Abendhimmel (lila) und Pulli (orange) */
+/* Farben aus dem Profilbild (Pulli orange) */
 :root {
 	--bg: #14110f;
 	--card: #1e1a17;
@@ -8,7 +8,7 @@
 	--muted: #a39586;
 	--orange: #f29b38;
 	--orange-dark: #b8641c;
-	--dusk: #4b2f63;
+	--avatar-shadow: #8a4512;
 	--radius: 12px;
 }
 
@@ -65,7 +65,7 @@ a {
 	padding: 4px;
 	background: var(--orange);
 	border-radius: var(--radius);
-	box-shadow: 6px 6px 0 var(--dusk);
+	box-shadow: 6px 6px 0 var(--avatar-shadow);
 }
 
 .avatar img {
@@ -254,7 +254,7 @@ h1 {
 		height: 168px;
 		padding: 5px;
 		border-radius: 16px;
-		box-shadow: 8px 8px 0 var(--dusk);
+		box-shadow: 8px 8px 0 var(--avatar-shadow);
 	}
 
 	.avatar img {
