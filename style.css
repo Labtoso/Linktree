@@ -1,3 +1,20 @@
+/* Schriften lokal, keine Anfragen an Google */
+@font-face {
+	font-family: "Bricolage Grotesque";
+	font-style: normal;
+	font-weight: 200 800;
+	font-display: swap;
+	src: url("Assets/fonts/bricolage-grotesque.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Silkscreen";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("Assets/fonts/silkscreen.woff2") format("woff2");
+}
+
 /* Farben aus dem Profilbild (Pulli orange) */
 :root {
 	--bg: #14110f;
@@ -205,10 +222,145 @@ h1 {
 
 .footer {
 	margin-top: auto;
-	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 6px 18px;
 	color: var(--muted);
 	font-family: "Silkscreen", monospace;
 	font-size: 0.75rem;
+}
+
+.footer-link {
+	padding: 4px 0;
+	color: var(--orange);
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 4px;
+}
+
+.footer-link:focus-visible {
+	outline: 2px solid var(--orange);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+@media (hover: hover) {
+	.footer-link:hover {
+		color: var(--text);
+	}
+}
+
+/* Impressum */
+
+.page-text {
+	max-width: 560px;
+	gap: 28px;
+}
+
+.back-link {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 0;
+	color: var(--muted);
+	font-size: 0.92rem;
+	font-weight: 500;
+	transition: color 120ms ease;
+}
+
+.back-link span {
+	transition: transform 120ms ease;
+}
+
+.back-link:focus-visible {
+	outline: 2px solid var(--orange);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+@media (hover: hover) {
+	.back-link:hover {
+		color: var(--text);
+	}
+
+	.back-link:hover span {
+		transform: translateX(-3px);
+	}
+}
+
+.legal-head {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.legal-head p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.95rem;
+	line-height: 1.45;
+}
+
+.legal {
+	display: flex;
+	flex-direction: column;
+	background: var(--card);
+	border: 2px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: 0 4px 0 #0b0908;
+}
+
+.legal section {
+	padding: 18px 18px 20px;
+}
+
+.legal section + section {
+	border-top: 2px solid var(--line);
+}
+
+.legal h2 {
+	margin: 0 0 10px;
+	color: var(--orange);
+	font-family: "Silkscreen", monospace;
+	font-size: 0.78rem;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+
+.legal p,
+.legal address {
+	margin: 0;
+	font-style: normal;
+	font-size: 1rem;
+	line-height: 1.55;
+	overflow-wrap: anywhere;
+}
+
+.legal a {
+	color: var(--text);
+	text-decoration: underline;
+	text-decoration-color: var(--orange);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 4px;
+}
+
+.legal a:focus-visible {
+	outline: 2px solid var(--orange);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+@media (hover: hover) {
+	.legal a:hover {
+		color: var(--orange);
+	}
 }
 
 /* Kleine Handys (z.B. iPhone SE) */
@@ -314,11 +466,31 @@ h1 {
 	.footer {
 		font-size: 0.85rem;
 	}
+
+	.page-text {
+		max-width: 640px;
+		gap: 36px;
+	}
+
+	.legal section {
+		padding: 22px 26px 24px;
+	}
+
+	.legal h2 {
+		font-size: 0.85rem;
+	}
+
+	.legal p,
+	.legal address {
+		font-size: 1.08rem;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
 	.link,
-	.link-arrow {
+	.link-arrow,
+	.back-link,
+	.back-link span {
 		transition: none;
 	}
 }
